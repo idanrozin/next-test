@@ -7,8 +7,7 @@ import Modal from './Modal';
 
 const movieDataCache = new Map();
 
-const MoviesGrid = () => {
-  const [movies, setMovies] = useState([]);
+const MoviesGrid = ({ movies, setMovies }) => {
   const [movieData, setMovieData] = useState(false);
   const { get, response, loading, error } = useFetch();
 
