@@ -5,6 +5,8 @@ import Movie from './Movie';
 import styles from '../styles/MoviesGrid.module.scss';
 import Modal from './Modal';
 
+const movieDataCache = new Map();
+
 const MoviesGrid = () => {
   const [movies, setMovies] = useState([]);
   const [movieData, setMovieData] = useState(false);
@@ -26,8 +28,17 @@ const MoviesGrid = () => {
   }
 
   async function showMovieInfo(movieId) {
-    const data = await get(`/movies/${movieId}`);
-    if (response.ok) {
+    let data;
+    const _response = {};
+    if (movieDataCache.has(movieId)) {
+      data = movieDataCache.get(movieId);
+      _response.ok = true;
+    } else {
+      data = await get(`/movies/${movieId}`);
+      _response.ok = response.ok;
+      movieDataCache.set(movieId, data);
+    }
+    if (_response.ok) {
       setMovieData(data[0]);
     }
   }
