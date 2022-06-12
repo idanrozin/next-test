@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from 'use-http';
 import Movie from './Movie';
+import Modal from './Modal';
 
 import styles from '../styles/MoviesGrid.module.scss';
-import Modal from './Modal';
 
 const movieDataCache = new Map();
 
