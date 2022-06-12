@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from 'use-http';
 import Movie from './Movie';
+import Modal from './Modal';
 
 import styles from '../styles/MoviesGrid.module.scss';
-import Modal from './Modal';
 
 const movieDataCache = new Map();
 
-const MoviesGrid = () => {
-  const [movies, setMovies] = useState([]);
+const MoviesGrid = ({ movies, setMovies }) => {
   const [movieData, setMovieData] = useState(false);
   const { get, response, loading, error } = useFetch();
 

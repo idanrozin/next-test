@@ -8,7 +8,6 @@ const Movie = ({ movieId, title, released, rating, image, onMovieClick }) => {
   const generatMovieTitle = () => title + (released ? ` (${released})` : '');
 
   const handleReadMore = (id) => {
-    console.log('id', id);
     onMovieClick(id);
   };
 
